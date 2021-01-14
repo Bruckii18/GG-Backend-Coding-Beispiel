@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/api/airline', [App\Http\Controllers\AirlineController::class, 'create'])->name('airlines.create');
+Route::get('/api/airlines', [App\Http\Controllers\AirlineController::class, 'showAll'])->name('airlines.showAll');
+Route::get('/api/airlines/{id}', [App\Http\Controllers\AirlineController::class, 'showId'])->name('airlines.showId');
+Route::put('/api/airlines/{id}', [App\Http\Controllers\AirlineController::class, 'update'])->name('airlines.update');
