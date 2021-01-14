@@ -9,11 +9,12 @@ class Airline extends Model
 {
     protected $table = 'Airline';
     protected $fillable = [
+        'id',
         'name',
         'country',
         'logo',
         'slogan',
-        'head_quarters',
+        'head_quaters',
         'website',
         'established'
     ];
