@@ -50,5 +50,20 @@ class AirlineController extends Controller
         ]);
     }
 
+    public function getPassengersOfAirline(Request $request, $id) {
+        $airlineById = Airline::findOrFail($id);
+        $allPassengers = Http::get('https://api.instantwebtools.net/v1/passenger');
+        $allPassengersData = json_decode($allPassengers);
 
+        $passengersOfAirline = [];
+        foreach ($allPassengersData->data as $data) {
+            if (isset($data->airline->name)) {
+                if($data->airline->name == $airlineById->name) {
+                    array_push($passengersOfAirline, $data);
+                }
+            }
+        }
+        $passengersOfAirline = array_slice($passengersOfAirline, ($request->page * 50 - 1) - 49, 50);
+        return $passengersOfAirline;
+    }
 }

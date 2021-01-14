@@ -21,3 +21,4 @@ Route::post('/api/airline', [App\Http\Controllers\AirlineController::class, 'cre
 Route::get('/api/airlines', [App\Http\Controllers\AirlineController::class, 'showAll'])->name('airlines.showAll');
 Route::get('/api/airlines/{id}', [App\Http\Controllers\AirlineController::class, 'showId'])->name('airlines.showId');
 Route::put('/api/airlines/{id}', [App\Http\Controllers\AirlineController::class, 'update'])->name('airlines.update');
+Route::get('/api/passengers/{id}', [App\Http\Controllers\AirlineController::class, 'getPassengersOfAirline'])->name('airline.getPassengers');
